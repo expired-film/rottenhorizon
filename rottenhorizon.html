@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="home/faviconn.gif">
+    <title>ROTTEN-HORIZON</title>
+
+    <style>
+        @font-face {
+            font-family: vcrosdmono;
+            src: url(fonts/vcrosdmono.ttf);
+        }
+    
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'vcrosdmono', sans-serif;
+            box-sizing: border-box;
+        }
+    
+        body {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: black;
+            color: white;
+            overflow: hidden;
+        }
+    
+        .screen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vw;
+            height: 100vh;
+            animation: fade-in 1s ease-in-out;
+        }
+    
+        .hidden {
+            display: none;
+        }
+    
+        .logo {
+            position: absolute;
+            top: 170px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .loadtext {
+            position: absolute;
+            top: 322px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 420px;
+            text-align: center;
+        }
+
+        .loading {
+            position: absolute;
+            top: 379px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 420px;
+            text-align: center;
+        }
+
+        .copycopy {
+            position: absolute;
+            top: 465px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 420px;
+            text-align: center;
+        }
+
+        .loading-bar {
+            height: 20px;
+            background: #333;
+            border: 3px solid #777;
+            margin-bottom: 70px;
+            position: absolute;
+            top: 419px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 560px;
+        }
+
+    
+        .loading-bar::before {
+            content: '';
+            display: block;
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(to right, rgb(0, 255, 255) , rgb(0, 17, 255));
+            animation: load 7s linear forwards;
+        }
+
+        .instruction {
+            position: absolute;
+            top: 200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 720px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .choicename {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 14px;
+            text-align: center;
+        }
+    
+        @keyframes load {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+    
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+    
+        button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 20px);
+            margin: 10px;
+            padding: 10px 20px;
+            background: #444;
+            border: 2px solid #777;
+            color: white;
+            cursor: pointer;
+        }
+    
+        button:hover {
+            background: #666;
+        }
+    
+        .choice-container {
+            position: absolute;
+            margin-top: 340px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+    
+        .choice {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+            animation: float 3s ease-in-out infinite;
+        }
+    
+        .choice img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    
+        .choice:hover {
+            transform: scale(1.1);
+        }
+    </style>
+    
+    
+</head>
+<body>
+    <div id="loading-screen" class="screen">
+        <div class="logo"><img src="game/logobruh.png" style="height:120px"></div>
+        <div class="loadtext">› You are treading on uncharted paths, where the unknown waits in silence</div>
+        <div class="loading">Loading...</div>
+        <div class="loading-bar"></div>
+        <div class="copycopy">© 2024 ALL RIGHTS RESERVED</div>
+    </div>
+
+    <div id="specimen-screen" class="screen hidden">
+        <div class="instruction">
+            › Before we proceed, summon a guardian into existence, who shall shield you from the perils that await on this uncertain journey.
+            <br><br> CHOOSE A SPECIMEN ..
+        </div>
+        <div class="choice-container" id="specimen-choices">
+            <div class="choice" data-type="fruits">
+                <img src="game/fruits.gif" alt="Fruits">
+                <div class="choicename">FRUIT</div>
+            </div>
+            <div class="choice" data-type="unidentified">
+                <img src="game/unidentified.gif" alt="Unidentified">
+                <div class="choicename">*UNIDENTIFIED*</div>
+            </div>
+            <div class="choice" data-type="celestial">
+                <img src="game/celestial.gif" alt="Celestial">
+                <div class="choicename">CELESTIAL OBJECT</div>
+            </div>
+            <div class="choice" data-type="flowers">
+                <img src="game/flowers.gif" alt="Flowers">
+                <div class="choicename">FLOWER</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="realm-screen" class="screen hidden">
+        <div class="instruction">
+        › Now, as your chosen guardian materializes into existence, select the realm you wish to traverse.
+        </div>
+        <div class="choice-container">
+            <div class="choice" data-type="woods">
+                <img src="game/woods.gif" alt="Woods">
+                <div class="choicename">THE ENCHANTED WOODS</div>
+            </div>
+            <div class="choice" data-type="skies">
+                <img src="game/skies.gif" alt="Skies">
+                <div class="choicename">THE SHIFTING SKIES</div>
+            </div>
+            <div class="choice" data-type="caverns">
+                <img src="game/caverns.gif" alt="Caverns">
+                <div class="choicename">THE CAVERNS BENEATH</div>
+            </div>
+            <div class="choice" data-type="sea">
+                <img src="game/sea.gif" alt="Sea">
+                <div class="choicename">THE BOTTOMLESS SEAS</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        const loadingScreen = document.getElementById("loading-screen");
+        const specimenScreen = document.getElementById("specimen-screen");
+        const subSpecimenScreen = document.getElementById("sub-specimen-screen");
+        const abilityScreen = document.getElementById("ability-screen");
+        const realmScreen = document.getElementById("realm-screen");
+        const choices = {};
+
+    const showScreen = (screenToShow) => {
+        document.querySelectorAll(".screen").forEach(screen => {
+            screen.classList.add("hidden");
+        });
+        screenToShow.classList.remove("hidden");
+    };
+
+    setTimeout(() => {
+        showScreen(specimenScreen);
+    }, 7000);
+
+    document.getElementById("specimen-choices").addEventListener("click", (e) => {
+        const type = e.target.closest(".choice")?.dataset.type;
+        if (type) {
+            choices.specimen = type;
+            localStorage.setItem("chosenCursor", `game/${type}.gif`);
+            showScreen(realmScreen);
+        }
+    });
+
+    realmScreen.addEventListener("click", (e) => {
+        const type = e.target.closest(".choice")?.dataset.type;
+        if (type) {
+            choices.realm = type;
+            localStorage.setItem("chosenBackground", `game/${choices.realm}.gif`);
+            window.location.href = "index.html";
+        }
+    });
+    </script>
+
+</body>
+</html>

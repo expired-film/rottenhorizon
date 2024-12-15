@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="home/faviconn.gif">
+    <title>ROTTEN-HORIZON</title>
+    <style>
+
+.peekaboo {
+        position: fixed;
+        top: 50%;
+        left: -100px;
+        transform: translateY(-50%);
+        height: 110px;
+        animation: none;
+        animation-duration: 3s;
+        z-index: 9999;
+    }
+
+    @keyframes peek {
+    0% {
+        left: -200px;
+    }
+    100% {
+        left: 200%;
+    }
+}
+
+
+    @font-face {
+                font-family: 'vcrosdmono';
+                src: url('fonts/vcrosdmono.ttf') format('truetype');
+            } 
+
+            @font-face {
+                font-family: 'jmhcthulhumbusarcade';
+                src: url('fonts/jmhcthulhumbusarcade.ttf') format('truetype');
+            }
+
+    html, body {
+        height: 100%;
+        margin: 0;
+        font-family: 'vcrosdmono', sans-serif;            
+        background-repeat: repeat-xy;
+        background-attachment: fixed;
+        word-spacing: 7px;
+        scrollbar-width: thin;
+        scrollbar-color: blue grey;
+        overflow-x: hidden;
+        padding: 0;
+    }
+
+    * {
+      font-family: 'vcrosdmono', sans-serif;
+    }
+
+    .mainwrap {
+      position: absolute;
+      left: 50%;
+      top: 55px;
+      transform: translateX(-50%);
+      width: 1280px;
+      height: 950px;
+      background: none;
+    }
+
+    header {
+        position: relative;
+        width: 100%;
+        text-align: left;
+        padding: 10px;
+    }
+
+    .header-images {
+        position: absolute;
+        left: 135px;
+        top: 20px;
+    }
+
+    .header-images img.still {
+        width: 150px;
+        height: auto;
+    }
+
+    .header-images img.moving {
+      position: absolute;
+      height: 105px;
+      top: -58px;
+      left: 21px;
+      animation: move 2s infinite alternate;
+    }
+
+    h1  {
+    position: absolute;
+    left: 325px;
+    top: -20px;
+    font-size: 25px;
+    width: 330px;
+    color: white;
+    }
+
+    h1 span {
+      animation: colorcycle 5s infinite;
+      font-family: 'jmhcthulhumbusarcade', sans-serif;
+      position: absolute;
+      margin-top: 33px;
+      margin-left: -280px;
+      width: 930px;
+      font-size: 34px;
+    }
+
+    @keyframes colorcycle {
+        0% { color: rgb(255, 234, 234); }
+        25% { color: rgb(116, 116, 252); }
+        50% { color: rgb(125, 255, 125); }
+        75% { color: rgb(248, 108, 248); }
+        100% { color: rgb(252, 133, 133); }
+    }
+
+    @keyframes move {
+        from { opacity: 0.5; }
+        to { opacity: 1; }
+    }
+
+    
+    #main-column {
+        position: absolute;
+        height: 695px;
+        top: 120px;
+        left: 230px;
+        right: 220px;
+        bottom: 100px;
+        padding: 0;
+        background-color: #d5dcff;
+        border: 2px solid #808080;
+        box-shadow: inset -1px -1px 0 #fff, 1px 1px 0 #000;
+        font-size: 12px;
+        color: black;
+    }
+
+    #main-column .title-bar {
+    background: linear-gradient(to right, rgb(47, 0, 255), rgb(255, 255, 255));
+    color: white;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    border-bottom: 2px solid #808080;
+}
+
+#main-column .title-bar .controls {
+    display: flex;
+    gap: 4px;
+}
+
+#main-column .title-bar .controls span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: #c0c0c0;
+    border: 1px solid black;
+    cursor: pointer;
+    box-shadow: inset -1px -1px 0 #fff, 1px 1px 0 #000;
+}
+
+#main-column .title-bar .controls span:hover {
+    background: #6135ff;
+}
+
+#main-column .content {
+    padding: 15px;
+}
+    </style>
+
+</head>
+<body>
+    <div class="mainwrap">
+        <header>
+            <div class="header-images">
+                <img src="home/cuppedhands.png" class="still">
+                <img src="home/planetspin.gif" class="moving">
+            </div>
+            <h1>
+                we welcome you to ..<span><img src="home/titlelogo.png" style="height:58px;"></span>
+            </h1>
+        </header>
+
+        
+<style>
+    #navigationbox {
+        position: absolute;
+        top: 120px;
+        left: -15px;
+        width: 230px;
+        height: 122px;
+        background: #c0c0c0;
+        padding: 0;
+        border: 2px solid #808080;
+        box-shadow: inset -1px -1px 0 #fff, 1px 1px 0 #000;
+        font-size: 12px;
+        color: black;
+    }
+
+    #navigationbox .title-bar {
+        background: linear-gradient(to right, rgb(47, 0, 255) , rgb(255, 255, 255));
+        color: white;
+        height: 20px;
+        line-height: 20px;
+        padding: 0 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+        border-bottom: 2px solid #808080;
+    }
+
+    #navigationbox .title-bar .controls {
+        display: flex;
+        gap: 4px;
+    }
+
+    #navigationbox .title-bar .controls span {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background: #c0c0c0;
+        border: 1px solid black;
+        cursor: pointer;
+        box-shadow: inset -1px -1px 0 #fff, 1px 1px 0 #000;
+    }
+
+    #navigationbox .title-bar .controls span:hover {
+        background: #6135ff;
+    }
+
+    #navigationbox .content {
+        font-size: 14px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+</style> 
+
+<div id="navigationbox">
+    <div class="title-bar">
+        <span>navigation</span>
+        <div class="controls">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="content">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<style>
+    #newsletbox {
+        position: absolute;
+        top: 258px;
+        left: -15px;
+        width: 230px;
+        height: 202px;
+        background: #c0c0c0;
+        padding: 0;
+        border: 2px solid #808080;
+        box-shadow: inset -1px -1px 0 #fff, 1px 1px 0 #000;
+        font-size: 12px;
+        color: black;
+        }
+    
+    #newsletbox .title-bar {
+        background: linear-gradient(to right, rgb(47, 0, 255) , rgb(255, 255, 255));
+        color: white;
+        height: 20px;
+        line-height: 20px;
+        padding: 0 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+        border-bottom: 2px solid #808080;
+    }
+    
+    #newsletbox .title-bar .controls {
+        display: flex;
+        gap: 4px;
+    }
+    
+    #newsletbox .title-bar .controls span {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background: #c0c0c0;
+        border: 1px solid black;
+        cursor: pointer;
+        box-shadow: inset -1px -1px 0 #fff, 1px 1px 0 #000;
+    }
+    
+    #newsletbox .title-bar .controls span:hover {
+        background: #6135ff;
+    }
+    
+    #newsletbox .content {
+        padding-left: 15px;
+        padding-top: 0px;
+    }
+    </style>
+    
+    <div id="newsletbox">
+        <div class="title-bar">
+            <span>newsletter</span>
+            <div class="controls">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="content">
+            <p><i>Sign Up for Our Newsletter!</i>
+                <br>
+                Whether you’re looking for useful tips, exciting news, 
+                or simply want to stay connected with our growing community, our newsletter has you covered.
+                <input type="email" placeholder="Your email">
+                <button>Sign Up</button>
+            </p>
+        </div>
+    </div>    
+
+    <style>
+        #graphicbox {
+            position: absolute;
+            top: 475px;
+            left: -15px;
+            width: 230px;
+            height: 253px;
+            background: #c0c0c0;
+            padding: 0;
+            border: 2px solid #808080;
+            box-shadow: inset -1px -1px 0 #fff, 1px 1px 0 #000;
+            font-size: 12px;
+            color: black;
+        }
+    
+        #graphicbox .title-bar {
+            background: linear-gradient(to right, rgb(47, 0, 255) , rgb(255, 255, 255));
+            color: white;
+            height: 20px;
+            line-height: 20px;
+            padding: 0 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            border-bottom: 2px solid #808080;
+        }
+    
+        #graphicbox .title-bar .controls {
+            display: flex;
+            gap: 4px;
+        }
+    
+        #graphicbox .title-bar .controls span {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #c0c0c0;
+            border: 1px solid black;
+            cursor: pointer;
+            box-shadow: inset -1px -1px 0 #fff, 1px 1px 0 #000;
+        }
+    
+        #graphicbox .title-bar .controls span:hover {
+            background: #6135ff;
+        }
+    
+        #graphicbox .content {
+            padding: 15px;
+        }
+    </style> 
+    
+    <div id="graphicbox">
+        <div class="title-bar">
+            <span>????</span>
+            <div class="controls">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="content">
+            <img src="home/breathe.gif" style="height:200px">
+        </div>
+    </div>
+    
+    <style>
+        #extrabox {
+            position: absolute;
+            top: 741px;
+            left: -15px;
+            width: 230px;
+            height: 73px;
+            background: #c0c0c0;
+            padding: 0;
+            border: 2px solid #808080;
+            box-shadow: inset -1px -1px 0 #fff, 1px 1px 0 #000;
+            font-size: 12px;
+            color: black;
+        }
+    
+        #extrabox .title-bar {
+            background: linear-gradient(to right, rgb(47, 0, 255) , rgb(255, 255, 255));
+            color: white;
+            height: 20px;
+            line-height: 20px;
+            padding: 0 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            border-bottom: 2px solid #808080;
+        }
+    
+        #extrabox .title-bar .controls {
+            display: flex;
+            gap: 4px;
+        }
+    
+        #extrabox .title-bar .controls span {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #c0c0c0;
+            border: 1px solid black;
+            cursor: pointer;
+            box-shadow: inset -1px -1px 0 #fff, 1px 1px 0 #000;
+        }
+    
+        #extrabox .title-bar .controls span:hover {
+            background: #6135ff;
+        }
+    
+        #extrabox .content {
+            padding-left: 15px;
+            padding-top: 5px;
+        }
+    </style>
+    
+    <div id="extrabox">
+        <div class="title-bar">
+            <span>extra!</span>
+            <div class="controls">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="content">
+            <p><a href="#">Email Us</a>     <a href="#"> Guestbook</a></p>
+        </div>
+    </div>    
+    
+    <style>
+        #graphicbox2 {
+            position: absolute;
+            top: 120px;
+            right: -25px;
+            width: 230px;
+            height: 253px;
+            background: #c0c0c0;
+            padding: 0;
+            border: 2px solid #808080;
+            box-shadow: inset -1px -1px 0 #fff, 1px 1px 0 #000;
+            font-size: 12px;
+            color: black;
+        }
+    
+        #graphicbox2 .title-bar {
+            background: linear-gradient(to right, rgb(47, 0, 255) , rgb(255, 255, 255));
+            color: white;
+            height: 20px;
+            line-height: 20px;
+            padding: 0 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            border-bottom: 2px solid #808080;
+        }
+    
+        #graphicbox2 .title-bar .controls {
+            display: flex;
+            gap: 4px;
+        }
+    
+        #graphicbox2 .title-bar .controls span {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #c0c0c0;
+            border: 1px solid black;
+            cursor: pointer;
+            box-shadow: inset -1px -1px 0 #fff, 1px 1px 0 #000;
+        }
+    
+        #graphicbox2 .title-bar .controls span:hover {
+            background: #6135ff;
+        }
+    
+        #graphicbox2 .content {
+            padding: 15px;
+        }
+    </style> 
+    
+    <div id="graphicbox2">
+        <div class="title-bar">
+            <span>????</span>
+            <div class="controls">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="content">
+            <img src="home/rsideimg.gif" style="height:200px">
+        </div>
+    </div>
+    
+    <style>
+        #pollbox {
+            position: absolute;
+            top: 396px;
+            right: -25px;
+            width: 230px;
+            height: 150px;
+            background: #c0c0c0;
+            padding: 0;
+            border: 2px solid #808080;
+            box-shadow: inset -1px -1px 0 #fff, 1px 1px 0 #000;
+            font-size: 12px;
+            color: black;
+            }
+        
+        #pollbox .title-bar {
+            background: linear-gradient(to right, rgb(47, 0, 255) , rgb(255, 255, 255));
+            color: white;
+            height: 20px;
+            line-height: 20px;
+            padding: 0 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            border-bottom: 2px solid #808080;
+        }
+        
+        #pollbox .title-bar .controls {
+            display: flex;
+            gap: 4px;
+        }
+        
+        #pollbox .title-bar .controls span {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #c0c0c0;
+            border: 1px solid black;
+            cursor: pointer;
+            box-shadow: inset -1px -1px 0 #fff, 1px 1px 0 #000;
+        }
+        
+        #pollbox .title-bar .controls span:hover {
+            background: #6135ff;
+        }
+        
+        #pollbox .content {
+            padding-left: 15px;
+            padding-top: 0px;
+        }
+        </style>
+        
+        <div id="pollbox">
+            <div class="title-bar">
+                <span>poll</span>
+                <div class="controls">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="content">
+                <form>
+                    <p>What do you fear most?</p>
+                    <input type="radio" name="poll" value="Darkness">Darkness<br>
+                    <input type="radio" name="poll" value="Heights">Heights<br>
+                    <input type="radio" name="poll" value="Monsters">Monsters<br>
+                    <button>Vote</button>
+                </form>
+            </div>
+        </div>    
+
+        <img src="home/randomimg.png" style="position: absolute;
+        top: 563px;
+        right: 101px; height:100px">
+
+        <img src="home/randomimg2.png" style="position: absolute;
+        top: 563px;
+        right: -15px; height:100px">
+    
+        <style>
+            #creditbox {
+                position: absolute;
+                top: 674px;
+                right: -25px;
+                width: 230px;
+                height: 141px;
+                background: #c0c0c0;
+                padding: 0;
+                border: 2px solid #808080;
+                box-shadow: inset -1px -1px 0 #fff, 1px 1px 0 #000;
+                font-size: 12px;
+                color: black;
+            }
+        
+            #creditbox .title-bar {
+                background: linear-gradient(to right, rgb(47, 0, 255) , rgb(255, 255, 255));
+                color: white;
+                height: 20px;
+                line-height: 20px;
+                padding: 0 5px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-weight: bold;
+                border-bottom: 2px solid #808080;
+            }
+        
+            #creditbox .title-bar .controls {
+                display: flex;
+                gap: 4px;
+            }
+        
+            #creditbox .title-bar .controls span {
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                background: #c0c0c0;
+                border: 1px solid black;
+                cursor: pointer;
+                box-shadow: inset -1px -1px 0 #fff, 1px 1px 0 #000;
+            }
+        
+            #creditbox .title-bar .controls span:hover {
+                background: #6135ff;
+            }
+        
+            #creditbox .content {
+                padding-left: 15px;
+                padding-top: 5px;
+            }
+        </style>
+        
+        <div id="creditbox">
+            <div class="title-bar">
+                <span>credits</span>
+                <div class="controls">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="content">
+                <p>images in the ???? boxes are from @dec2007 on tumblr.
+                <br>blinkies in the marquee were made using the blinkies cafe tool!</p>
+            </div>
+        </div>    
+        
+        <div id="main-column">
+            <div class="title-bar">
+                www.ROTTEN-HORIZON.com
+                <div class="controls">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="content">
+            <p>
+                Embark on the ROTTEN-HORIZON adventure, the game that evolves with your choices. Every decision shapes the world around you, adapting to your preferences and actions. Travel through dangerous landscapes—from barren deserts to eerie forests, towering mountains to dark caverns—each more treacherous than the last. But the journey is not just physical; it's mental. Face your deepest fears as the game challenges you with obstacles that reflect your anxieties. Battle fierce creatures, solve tough puzzles, and survive harsh environments that push your limits. As you progress, the world changes based on your actions. Enemies grow smarter, landscapes shift, and your fears become more intense. Will you rise to the challenge, or will fear take control? With unpredictable gameplay and a constantly evolving story, every journey is unique. Can you conquer your fears, or will they defeat you? The world of ROTTEN-HORIZON is waiting.
+            </p>
+            <br>
+            <marquee behavior="scroll" direction="left" scrollamount="infinite">
+                <img src="home/blinkieone.gif" style="height:18px">
+                <img src="home/blinkietwo.gif" style="height:18px">
+                <img src="home/blinkiethree.gif" style="height:18px">
+                <img src="home/blinkiefour.gif" style="height:18px">
+                <img src="home/blinkiefive.gif" style="height:18px">
+                <img src="home/blinkiesix.gif" style="height:18px">                
+            </marquee>
+            <br><br>
+            <button style="height: 32px;
+            width: 280px;
+            background-color: blueviolet;
+            color: white;
+            border-color: gray;
+            border-width: 4px;
+            position: absolute;
+            left: 125px;">Download Free Trial TODAY!</button>
+            <button style="height: 32px;
+            width: 280px;
+            background-color: blue;
+            color: white;
+            border-color: gray;
+            border-width: 4px;
+            position: absolute;
+            left: 430px;">Buy ROTTEN-HORIZON for just ₹400!</button>
+            <div id="game">
+            <br><br>
+            <img src="home/gamepreview.gif" style="height:230px;position: absolute;top: 320px;left: 60px;">
+            <img src="home/gamepreview2.gif" style="height:230px;position: absolute;top: 320px;left: 444px;">
+            <br><br>
+            </div>
+            <div id="testimonials" style="height: 230px;
+            position: absolute;
+            top: 587px;
+            width: 792px;">
+                People love our game! Here are some testimonials ..
+                <marquee direction="right" scrollamount="8" style="font-size: 16px; color: #000000;">
+                    <div style="display: inline-block; margin-right: 40px; text-align: center;">
+                        <p>"A truly chilling experience! I couldn't stop playing!"</p>
+                        <p><strong>ShadowHunter</strong></p>
+                    </div>
+                    <div style="display: inline-block; margin-right: 40px; text-align: center;">
+                        <p>"This game gave me goosebumps the entire time. So much fun!"</p>
+                        <p><strong>NightStalker</strong></p>
+                    </div>
+                    <div style="display: inline-block; margin-right: 40px; text-align: center;">
+                        <p>"I’m addicted! The atmosphere is incredible!"</p>
+                        <p><strong>GhostRider</strong></p>
+                    </div>
+                    <div style="display: inline-block; margin-right: 40px; text-align: center;">
+                        <p>"The puzzles kept me on edge. Great spooky vibes!"</p>
+                        <p><strong>PhantomX</strong></p>
+                    </div>
+                    <div style="display: inline-block; margin-right: 40px; text-align: center;">
+                        <p>"Best horror game I've played in years. Highly recommend!"</p>
+                        <p><strong>DarkKnight</strong></p>
+                    </div>
+                    <div style="display: inline-block; margin-right: 40px; text-align: center;">
+                        <p>"I was hooked from the first scare. Loved every minute!"</p>
+                        <p><strong>FearEater</strong></p>
+                    </div>
+                    <div style="display: inline-block; margin-right: 40px; text-align: center;">
+                        <p>"Spooky, mysterious, and thrilling. Can't stop playing!"</p>
+                        <p><strong>CrimsonShade</strong></p>
+                    </div>
+                </marquee>                
+            </div>
+            </div>
+        </div>
+
+        <style>
+            #bottomsection {
+                position: absolute;
+                bottom: 18px;
+                left: 50%;
+                transform: translateX(-50%);
+                text-align: center;
+                width: 1296px;
+                height: 95px;
+                background: #c0c0c0;
+                padding: 0;
+                border: 2px solid #808080;
+                box-shadow: inset -1px -1px 0 #fff, 1px 1px 0 #000;
+                font-size: 12px;
+                color: black;
+            }
+        
+            #bottomsection .title-bar {
+                background: linear-gradient(to right, rgb(47, 0, 255) , rgb(255, 255, 255));
+                color: white;
+                height: 20px;
+                line-height: 20px;
+                padding: 0 5px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-weight: bold;
+                border-bottom: 2px solid #808080;
+            }
+        
+            #bottomsection .title-bar .controls {
+                display: flex;
+                gap: 4px;
+            }
+        
+            #bottomsection .title-bar .controls span {
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                background: #c0c0c0;
+                border: 1px solid black;
+                cursor: pointer;
+                box-shadow: inset -1px -1px 0 #fff, 1px 1px 0 #000;
+            }
+        
+            #bottomsection .title-bar .controls span:hover {
+                background: #6135ff;
+            }
+        
+            #bottomsection .content {
+                padding: 6px;
+            }
+        </style> 
+        
+        <div id="bottomsection">
+            <div class="title-bar">
+                <span>footer</span>
+                <div class="controls">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="content">
+            <p><a href="#">Contact Us</a> | <a href="#">Get in Touch!</a></p>
+            <p>© 2024 ROTTEN-HORIZON | All Rights Reserved. ☆ <a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a> | <a href="#">Cookie Policy</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        const chosenBackground = localStorage.getItem("chosenBackground");
+        const chosenCursor = localStorage.getItem("chosenCursor");
+        const chosenMainImg = localStorage.getItem("chosenMainImg");
+        if (chosenBackground) {
+            document.body.style.backgroundImage = `url(${chosenBackground})`;
+        } else {
+            console.warn("No background set in localStorage.");
+        }
+        
+        if (chosenCursor) {
+    const cursorImage = new Image();
+    cursorImage.src = chosenCursor;
+    cursorImage.onload = () => {
+        try {
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
+            canvas.width = 36;
+            canvas.height = 39;
+            ctx.drawImage(cursorImage, 0, 0, 36, 39);
+            const resizedCursor = canvas.toDataURL("image/png");
+            document.body.style.cursor = `url('${resizedCursor}') 18 18, auto`;
+        } catch (error) {
+            console.error("Error resizing and setting the cursor:", error);
+        }
+    };
+
+    cursorImage.onerror = () => {
+        console.error("Failed to load cursor image:", chosenCursor);
+    };
+
+    const mainImage = document.createElement("img");
+    mainImage.src = chosenCursor;
+    mainImage.classList.add("peekaboo");
+    mainImage.alt = "Chosen Guardian";
+    document.body.appendChild(mainImage);
+} else {
+    console.warn("No cursor set in localStorage.");
+}
+
+    </script>
+    
+    <script>
+    const peekImages = document.querySelectorAll(".peekaboo");
+    const showPeek = () => {
+        peekImages.forEach(peekImage => {
+            peekImage.style.animation = "peek 10s ease-in-out";
+            setTimeout(() => {
+                peekImage.style.animation = "none";
+            }, 7000);
+        });
+    };
+    setInterval(showPeek, 7000);
+    </script>
+
+</body>
+</html>
