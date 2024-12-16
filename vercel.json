@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/rottenhorizon.html",
+      "permanent": true
+    }
+  ]
+}
