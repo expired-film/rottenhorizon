@@ -1,11 +1,10 @@
 module.exports = {
-  async redirects() {
+  async rewrites() {
     return [
       {
         source: '/',
         destination: '/rottenhorizon.html',
-        permanent: true,
       },
-    ];
+    ]
   },
-};
+}
